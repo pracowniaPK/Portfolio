@@ -18,6 +18,8 @@ from pathlib import Path
 
 
 load_dotenv()
+# for x in os.environ:
+#     print(x, os.environ.get(x))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -30,7 +32,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '(4v+pt*uu7snl39rz6myb_h=y1q9kj61zm-m#5=jlyl7p9-+bs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = int(os.environ.get('DEBUG', default=0)) 
 
 ALLOWED_HOSTS = []
 
@@ -83,11 +85,11 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('db_name'),
-        'USER': os.getenv('db_user'),
-        'PASSWORD': os.getenv('db_pass'),
-        'HOST': os.getenv('db_host'),
-        'PORT': '',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASS'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': '5432',
     }
 }
 
