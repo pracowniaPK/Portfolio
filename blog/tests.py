@@ -1,3 +1,5 @@
 from django.test import TestCase
 
-# Create your tests here.
+class InitTestCase(TestCase):
+    def test_sanity_check(self):
+        self.assertAlmostEqual(1, 1)
