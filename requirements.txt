@@ -2,6 +2,7 @@ django
 psycopg2
 python-dotenv
 gunicorn
+pillow
 
 # CI
 pycodestyle
