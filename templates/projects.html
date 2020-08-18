@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Projekty:</h2>
+{% for project in projects %}
+<h3>{{ project.title }}</h3>
+<p>Tagi: {% for tag in project.tags.all %} <b> {{ tag.label }} </b> {% endfor %}</p>
+<p>{{ project.description }}</p>
+<img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" width="300" height="200">
+<p>Linki: {% for link in project.links.all %} <b> <a href="{{link.target}}">{{ link.label }}</a> </b> {% endfor %}</p>
+<hr>
+{% endfor %}
+
+{% endblock %}

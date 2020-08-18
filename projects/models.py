@@ -6,7 +6,7 @@ class Project(models.Model):
     show = models.BooleanField(default=True)
     tags = models.ManyToManyField('ProjectTag', blank=True)
     links = models.ManyToManyField('ProjectLink', blank=True)
-    thumbnail = models.ImageField(upload_to='images/', default='media\images\default.png')
+    thumbnail = models.ImageField(upload_to='images/', default='images\default.png')
 
     def __str__(self):
         hidden = '' if self.show else '(hidden) '

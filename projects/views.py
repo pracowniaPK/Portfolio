@@ -1,5 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import Project
+
 def index(request):
-    return HttpResponse('Działaaa!')
+    projects = Project.objects.filter(show=True)
+    print(projects)
+
+    return render(request, 'projects.html', {'projects': projects})
+
+
