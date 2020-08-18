@@ -1,16 +1,21 @@
 from django.db import models
 
+
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=1000, default='')
     show = models.BooleanField(default=True)
     tags = models.ManyToManyField('ProjectTag', blank=True)
     links = models.ManyToManyField('ProjectLink', blank=True)
-    thumbnail = models.ImageField(upload_to='images/', default='images\default.png')
+    thumbnail = models.ImageField(
+        upload_to='images/', 
+        default='images/default.png'
+    )
 
     def __str__(self):
         hidden = '' if self.show else '(hidden) '
         return hidden + self.title
+
 
 class ProjectLink(models.Model):
     label = models.CharField(max_length=200)
@@ -18,6 +23,7 @@ class ProjectLink(models.Model):
 
     def __str__(self):
         return '{} ({})'.format(self.label, self.target)
+
 
 class ProjectTag(models.Model):
     label = models.CharField(max_length=200)
