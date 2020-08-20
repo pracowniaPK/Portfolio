@@ -11,6 +11,7 @@ class Project(models.Model):
         upload_to='images/', 
         default='images/default.png'
     )
+    priority = models.FloatField(default=0)
 
     def __str__(self):
         hidden = '' if self.show else '(hidden) '
@@ -27,7 +28,7 @@ class ProjectLink(models.Model):
 
 class ProjectTag(models.Model):
     label = models.CharField(max_length=200)
-    color = models.CharField(max_length=10)
+    color = models.CharField(max_length=10, default='#FFC0CB')
     
     def __str__(self):
         return self.label
