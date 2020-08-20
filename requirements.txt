@@ -6,3 +6,6 @@ pillow
 
 # CI
 pycodestyle
+
+# TEST
+coverage
