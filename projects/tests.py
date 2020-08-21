@@ -35,7 +35,6 @@ class MainViewTestCase(TestCase):
         correct_order = r'proj5(.|\n)*proj2(.|\n)*proj1(.|\n)*proj4'
         self.assertRegex(response.content.decode("utf-8"), correct_order)
 
-
     def test_tag_filtering(self):
         create_test_data()
         response = self.client.get(self.index_url, {'tag':'tag1'})
@@ -44,4 +43,11 @@ class MainViewTestCase(TestCase):
         self.assertNotContains(response, 'proj3')
         self.assertNotContains(response, 'proj4')
         self.assertContains(response, 'proj5')
+
+    def test_tag_not_strict_filtering(self):
+        create_test_data()
+        response = self.client.get(self.index_url, {'tag':'tag1'})
+        correct_order = r'proj5(.|\n)*proj1(.|\n)*proj2(.|\n)*proj4'
+        
+
 
