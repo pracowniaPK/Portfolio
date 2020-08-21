@@ -10,10 +10,12 @@ class InitTestCase(TestCase):
     def test_sanity_check(self):
         self.assertAlmostEqual(1, 1)
 
+
 class ResolveUrlTestCase(TestCase):
     def test_main_url_resolves(self):
         url = reverse('index')
         self.assertEquals(resolve(url).func, index)
+
 
 class MainViewTestCase(TestCase):
     def setUp(self):
@@ -37,7 +39,7 @@ class MainViewTestCase(TestCase):
 
     def test_tag_filtering(self):
         create_test_data()
-        response = self.client.get(self.index_url, {'tag':'tag1'})
+        response = self.client.get(self.index_url, {'tag': 'tag1'})
         self.assertContains(response, 'proj1')
         self.assertNotContains(response, 'proj2')
         self.assertNotContains(response, 'proj3')
@@ -46,8 +48,5 @@ class MainViewTestCase(TestCase):
 
     def test_tag_not_strict_filtering(self):
         create_test_data()
-        response = self.client.get(self.index_url, {'tag':'tag1'})
+        response = self.client.get(self.index_url, {'tag': 'tag1'})
         correct_order = r'proj5(.|\n)*proj1(.|\n)*proj2(.|\n)*proj4'
-        
-
-
