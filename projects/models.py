@@ -13,6 +13,9 @@ class Project(models.Model):
     )
     priority = models.FloatField(default=0)
 
+    class Meta:
+        ordering = ['-priority']
+
     def __str__(self):
         hidden = '' if self.show else '(hidden) '
         return hidden + self.title

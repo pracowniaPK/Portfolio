@@ -3,9 +3,12 @@
 {% block content %}
 
 <h2>Projekty:</h2>
+{% if x_tag|length > 0 %} <a href="/"> ❌ {{ x_tag }} </a> {% endif %}
 {% for project in projects %}
 <h3>{{ project.title }}</h3>
-<p>Tagi: {% for tag in project.tags.all %} <b> {{ tag.label }} </b> {% endfor %}</p>
+<p>Tagi: {% for tag in project.tags.all %} 
+    <a href='?tag={{ tag.label }}'><b> {{ tag.label }} </b></a>
+{% endfor %}</p>
 <p>{{ project.description }}</p>
 <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" width="300" height="200">
 <p>Linki: {% for link in project.links.all %} <b> <a href="{{link.target}}">{{ link.label }}</a> </b> {% endfor %}</p>
