@@ -1,19 +1,83 @@
 {% load static %}
 
-<!DOCTYPE html>
+
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
-<head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-</head>
-<body>
+	<head>
+		<title>Paweł's portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	</head>
+	<body class="is-preload">
 
-<h1>Portfolio Pawła xd</h1>
+		<!-- Header -->
+			<header id="header">
+				<div class="inner">
+					<a href="#" class="image avatar"><img src="/media/images/Adnotacja_2020-08-18_173613.png" alt="" /></a>
+					<h1>[<strong>headers 1</strong>]<br />
+					[headers]</h1>
+					<p>[text1]</p>
+				</div>
+			</header>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+					<section id="one">
+						<header class="major">
+							<h2>[header 2]</h2>
+						</header>
+						<p>[text 2]</p>
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+					</section>
+
+				<!-- Two -->
+
+				{% block content %}{% endblock %}
 
 
-{% block content %}{% endblock %}
+				<section id="three">
+					<header class="major">
+						<h2>Contact</h2>
+					</header>
+					<p>[contact info]</p>
+					<ul class="actions">
+						<li><a href="#" class="button">Get Resume</a></li>
+					</ul>
+				</section>
 
+			</div>
 
-<p>koniec 👋</p>
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://github.com/pracowniaPK" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon solid fa-file-alt"><span class="label">Dribbble</span></a></li>
+						<li><a href="mailto:pracowniapk@yahoo.com " class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>© <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
 
-</body>
+		<!-- Scripts -->
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/jquery.poptrox.min.js' %}"></script>
+			<script src="{% static 'js/browser.min.js' %}"></script>
+			<script src="{% static 'js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'js/util.js' %}"></script>
+			<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
 </html>
