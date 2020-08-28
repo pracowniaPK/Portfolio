@@ -12,14 +12,17 @@
         {% for project in projects %}
         <article class="col-6 col-12-xsmall work-item">
             <a href="images/fulls/01.jpg" class="image fit thumb"><img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" /></a>
-            <p>Tagi:
+            <p>Tags:
                 {% for tag in project.tags.all %}
                 &nbsp;<a href='?tag={{ tag.label }}'><b> {{ tag.label }} </b></a>
                 {% endfor %}
             </p>
             <h3>{{ project.title }}</h3>
             <p>{{ project.description }}</p>
-            <p>Linki: {% for link in project.links.all %} <b> <a href="{{link.target}}">{{ link.label }}</a> </b> {% endfor %}</p>
+            <p>Links:
+                {% for link in project.projectlink_set.all %}
+                &nbsp;<b><a href="{{link.target}}">{{ link.label }}</a> </b> {% endfor %}
+            </p>
         </article>
         {% endfor %}
 

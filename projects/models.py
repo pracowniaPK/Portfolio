@@ -6,7 +6,6 @@ class Project(models.Model):
     description = models.CharField(max_length=1000, default='')
     show = models.BooleanField(default=True)
     tags = models.ManyToManyField('ProjectTag', blank=True)
-    links = models.ManyToManyField('ProjectLink', blank=True)
     thumbnail = models.ImageField(upload_to='images/', default='images/default.png')
     priority = models.FloatField(default=0)
 
@@ -21,9 +20,10 @@ class Project(models.Model):
 class ProjectLink(models.Model):
     label = models.CharField(max_length=200)
     target = models.CharField(max_length=1000)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
-        return '{} ({})'.format(self.label, self.target)
+        return '[{}] {} ({})'.format(self.project.title, self.label, self.target)
 
 
 class ProjectTag(models.Model):
