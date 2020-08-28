@@ -3,7 +3,7 @@ from django.urls import resolve, reverse
 
 from .views import index
 from .models import Project
-from .test_utils import create_test_data
+from .test_utils import *
 
 
 class InitTestCase(TestCase):
@@ -36,6 +36,25 @@ class MainViewTestCase(TestCase):
         response = self.client.get(self.index_url)
         correct_order = r'proj5(.|\n)*proj2(.|\n)*proj1(.|\n)*proj4'
         self.assertRegex(response.content.decode("utf-8"), correct_order)
+
+    def test_shows_tags(self):
+        create_test_data()
+        response = self.client.get(self.index_url)
+        self.assertContains(response, 'tag1')
+        self.assertNotContains(response, 'tag3')
+
+    def test_shows_links(self):
+        create_test_data2()
+        response = self.client.get(self.index_url)
+        self.assertContains(response, 'link1')
+        self.assertContains(response, 'target1')
+        self.assertNotContains(response, 'link2')
+
+
+class TagFilteringViewTestCase(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.index_url = reverse('index')
 
     def test_tag_filtering(self):
         create_test_data()
