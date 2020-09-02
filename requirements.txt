@@ -1,8 +1,9 @@
 django
 psycopg2
 python-dotenv
-gunicorn
 pillow
+gunicorn
+whitenoise
 
 # CI
 pycodestyle
