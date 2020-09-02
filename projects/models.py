@@ -6,7 +6,8 @@ class Project(models.Model):
     description = models.CharField(max_length=1000, default='')
     show = models.BooleanField(default=True)
     tags = models.ManyToManyField('ProjectTag', blank=True)
-    thumbnail = models.ImageField(upload_to='images/', default='images/default.png')
+    thumbnail = models.CharField(max_length=1000, default='')
+    default_link = models.CharField(max_length=1000, default='')
     priority = models.FloatField(default=0)
 
     class Meta:
